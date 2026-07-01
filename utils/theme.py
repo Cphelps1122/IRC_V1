@@ -220,27 +220,65 @@ def apply_theme():
             fill: #EAF2FF !important;
             -webkit-text-fill-color: #EAF2FF !important;
         }}
+        div[data-baseweb="select"] div {{
+            border-color: transparent;
+        }}
+        div[data-baseweb="select"] [data-baseweb="tag"] + div,
+        div[data-baseweb="select"] [data-baseweb="tag"] + span {{
+            border-left: 0 !important;
+            box-shadow: none !important;
+        }}
         div[data-baseweb="tag"] {{
-            background-color: rgba(56, 189, 248, 0.18) !important;
-            border: 1px solid rgba(56, 189, 248, 0.42) !important;
+            background-color: rgba(56, 189, 248, 0.16) !important;
+            border: 1px solid rgba(56, 189, 248, 0.46) !important;
             border-radius: 999px !important;
-            min-width: 54px !important;
+            min-width: 76px !important;
             max-width: 100% !important;
-            height: 28px !important;
-            padding: 0 8px !important;
+            height: 32px !important;
+            padding: 0 10px 0 12px !important;
+            margin: 2px 5px 2px 0 !important;
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            overflow: visible !important;
+            box-shadow: none !important;
         }}
-        div[data-baseweb="tag"] span {{
+        div[data-baseweb="tag"]::before, div[data-baseweb="tag"]::after {{
+            display: none !important;
+            content: none !important;
+        }}
+        div[data-baseweb="tag"], div[data-baseweb="tag"] * {{
             color: #EAF2FF !important;
             -webkit-text-fill-color: #EAF2FF !important;
+            font-weight: 850 !important;
+            line-height: 1.05 !important;
+            text-decoration: none !important;
+        }}
+        div[data-baseweb="tag"] span {{
+            display: inline-flex !important;
+            align-items: center !important;
             overflow: visible !important;
             text-overflow: clip !important;
             white-space: nowrap !important;
-            font-weight: 800 !important;
-            line-height: 1 !important;
+            min-width: fit-content !important;
         }}
-        div[data-baseweb="tag"] svg {{ width: 14px !important; height: 14px !important; fill: #EAF2FF !important; }}
+        div[data-baseweb="tag"] button,
+        div[data-baseweb="tag"] [role="button"] {{
+            background: transparent !important;
+            border: 0 !important;
+            border-left: 0 !important;
+            box-shadow: none !important;
+            padding: 0 0 0 6px !important;
+            margin: 0 !important;
+            min-width: 18px !important;
+        }}
+        div[data-baseweb="tag"] svg {{
+            width: 14px !important;
+            height: 14px !important;
+            fill: #EAF2FF !important;
+            color: #EAF2FF !important;
+        }}
         div[data-baseweb="popover"] ul,
         div[data-baseweb="popover"] li,
         div[role="listbox"], div[data-baseweb="menu"] {{
@@ -264,6 +302,24 @@ def apply_theme():
         .stButton > button:hover, .stDownloadButton > button:hover {{
             border-color: var(--accent);
             color: var(--accent) !important;
+        }}
+        .st-key-sticky_filters .stButton > button,
+        .st-key-sticky_filters div[data-testid="stButton"] button,
+        .st-key-sticky_filters button[kind="secondary"] {{
+            background: rgba(18, 41, 69, 0.96) !important;
+            border: 1px solid rgba(148, 163, 184, 0.46) !important;
+            color: #EAF2FF !important;
+            -webkit-text-fill-color: #EAF2FF !important;
+            font-weight: 900 !important;
+            box-shadow: none !important;
+        }}
+        .st-key-sticky_filters .stButton > button:hover,
+        .st-key-sticky_filters div[data-testid="stButton"] button:hover,
+        .st-key-sticky_filters button[kind="secondary"]:hover {{
+            background: rgba(56, 189, 248, 0.14) !important;
+            border-color: var(--accent) !important;
+            color: #EAF2FF !important;
+            -webkit-text-fill-color: #EAF2FF !important;
         }}
         .dashboard-table-wrap {{ width: 100%; overflow: visible; }}
         .dashboard-table {{ width:100%; border-collapse: separate; border-spacing:0 9px; table-layout:auto; }}
