@@ -54,13 +54,18 @@ def _clean_selection(selection):
 
 
 def _safe_default(key: str, options: list[str]) -> list[str]:
-    existing = st.session_state.get(key, ["All"])
+    """Return a safe default for multi-selects.
+
+    Empty selection means All. This avoids rendering a cramped "All" chip by default
+    while still keeping All as an available option in the dropdown.
+    """
+    existing = st.session_state.get(key, [])
     if isinstance(existing, str):
         existing = [existing]
     if not existing or "All" in existing:
-        return ["All"] if "All" in options else []
-    valid = [x for x in existing if x in options]
-    return valid if valid else (["All"] if "All" in options else [])
+        return []
+    valid = [x for x in existing if x in options and x != "All"]
+    return valid
 
 
 def _multiselect(label: str, options: list[str], key: str, help_text: str | None = None) -> list[str]:
@@ -70,6 +75,7 @@ def _multiselect(label: str, options: list[str], key: str, help_text: str | None
         default=_safe_default(key, options),
         key=key,
         help=help_text,
+        placeholder="All",
     )
 
 
@@ -154,7 +160,7 @@ def render_top_filters(df: pd.DataFrame, include_provider: bool = False, include
             st.markdown("<div style='height:1.72rem'></div>", unsafe_allow_html=True)
             if st.button("Reset", use_container_width=True, help="Reset all filters to the current month and All selections."):
                 for k in ["filter_state", "filter_property", "filter_utility", "filter_provider", "filter_alert_level"]:
-                    st.session_state[k] = ["All"]
+                    st.session_state[k] = []
                 st.rerun()
 
         filtered = filter_dimension(df, states=state_selection, properties=property_selection, utilities=utility_selection, providers=provider_selection)
