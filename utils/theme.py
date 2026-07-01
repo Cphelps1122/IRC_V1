@@ -121,11 +121,14 @@ def apply_theme():
         }}
         .metric-label {{
             color: var(--text-muted) !important;
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             text-transform: uppercase;
-            letter-spacing: 0.045em;
+            letter-spacing: 0.012em;
             font-weight: 800;
-            white-space: nowrap;
+            white-space: normal;
+            line-height: 1.22;
+            overflow-wrap: normal;
+            word-break: keep-all;
         }}
         .metric-value {{
             color: var(--text-main) !important;
@@ -325,7 +328,7 @@ def apply_theme():
         .dashboard-table {{ width:100%; border-collapse: separate; border-spacing:0 9px; table-layout:auto; }}
         .dashboard-table th {{
             text-align:left; color:var(--text-muted) !important; font-size:.70rem; text-transform:uppercase;
-            letter-spacing:.03em; padding:0 .60rem .18rem .60rem; white-space: nowrap; line-height:1.15;
+            letter-spacing:.012em; padding:0 .60rem .18rem .60rem; white-space: nowrap; line-height:1.18;
         }}
         .dashboard-table td {{
             background: rgba(15,31,53,.70); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
@@ -346,10 +349,34 @@ def apply_theme():
         .alert-title {{ font-weight:900; font-size:1rem; color:var(--text-main) !important; }}
         .alert-sub {{ color:var(--text-muted) !important; font-size:.84rem; margin-top:.18rem; }}
         .alert-reason {{ margin-top:.65rem; font-size:.9rem; color:var(--text-main) !important; line-height:1.35; }}
-        .mini-grid {{ display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:.55rem; margin-top:.75rem; }}
-        .mini-stat {{ border:1px solid var(--border); background:rgba(255,255,255,.035); border-radius:12px; padding:.55rem .65rem; min-width:0; }}
-        .mini-label {{ color:var(--text-muted) !important; font-size:.66rem; text-transform:uppercase; letter-spacing:.035em; font-weight:850; white-space:nowrap; }}
-        .mini-value {{ color:var(--text-main) !important; font-size:.9rem; font-weight:900; margin-top:.12rem; line-height:1.28; }}
+        .mini-grid {{
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+            gap:.65rem;
+            margin-top:.75rem;
+            align-items:stretch;
+        }}
+        .mini-stat {{
+            border:1px solid var(--border);
+            background:rgba(255,255,255,.035);
+            border-radius:12px;
+            padding:.62rem .74rem;
+            min-width:0;
+            min-height:72px;
+            overflow:visible;
+        }}
+        .mini-label {{
+            color:var(--text-muted) !important;
+            font-size:.64rem;
+            text-transform:uppercase;
+            letter-spacing:.012em;
+            font-weight:850;
+            white-space:normal;
+            overflow-wrap:normal;
+            word-break:keep-all;
+            line-height:1.22;
+        }}
+        .mini-value {{ color:var(--text-main) !important; font-size:.96rem; font-weight:900; margin-top:.26rem; line-height:1.25; }}
         .delta-good, .delta-good * {{ color: var(--accent-2) !important; -webkit-text-fill-color: var(--accent-2) !important; font-weight: 950 !important; }}
         .delta-bad, .delta-bad * {{ color: var(--danger) !important; -webkit-text-fill-color: var(--danger) !important; font-weight: 950 !important; }}
         .delta-watch, .delta-watch * {{ color: var(--warning) !important; -webkit-text-fill-color: var(--warning) !important; font-weight: 950 !important; }}
@@ -365,7 +392,7 @@ def apply_theme():
             line-height: 1.35;
         }}
         @media (max-width: 1100px) {{
-            .mini-grid {{ grid-template-columns: repeat(2, minmax(0,1fr)); }}
+            .mini-grid {{ grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); }}
             .st-key-sticky_filters {{ top: 2.8rem; }}
         }}
         </style>
